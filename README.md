@@ -23,8 +23,12 @@ python infer.py -pred ../results/ -exp ../checkpoints/VGSD.pth
 ```
 
 ### Training
-Download backbone weights from the [resnext_101_32x4d.pth](https://github.com/fawnliu/VGSD/releases/download/1.0/resnext_101_32x4d.pth) and run `train.py` to train the model.
+1. Please inference the reflection maps for the glass regions in the training dataset (192 videos) from [SIRR](https://github.com/zdlarr/Location-aware-SIRR).
+2. Download backbone weights from the [resnext_101_32x4d.pth](https://github.com/fawnliu/VGSD/releases/download/1.0/resnext_101_32x4d.pth) and run `train.py` to train the model.
 
+
+### Contact
+If you have any questions, please feel free to contact me via `fawnliu2333@gmail.com`.
 
 ### Citation
 
