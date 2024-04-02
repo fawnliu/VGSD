@@ -4,15 +4,12 @@
 
 
 ```
-@article{Liu_Liu_Lin_Xu_Lau_2024,
+@inproceedings{liu2024multi,
   title={Multi-View Dynamic Reflection Prior for Video Glass Surface Detection},
+  author={Liu, Fang and Liu, Yuhao and Lin, Jiaying and Xu, Ke and Lau, Rynson WH},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
   volume={38},
-  url={https://ojs.aaai.org/index.php/AAAI/article/view/28148},
-  DOI={10.1609/aaai.v38i4.28148},
   number={4},
-  journal={Proceedings of the AAAI Conference on Artificial Intelligence},
-  author={Liu, Fang and Liu, Yuhao and Lin, Jiaying and Xu, Ke and Lau, Rynson W.H.},
-  year={2024},
-  month={Mar.},
-  pages={3594-3602}
+  pages={3594--3602},
+  year={2024}
 }
