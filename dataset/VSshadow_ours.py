@@ -113,12 +113,12 @@ class CrossPairwiseImg(data.Dataset):
         if self.joint_transform is not None:
             if self.reflection_root is None:
                 exemplar, exemplar_gt = self.joint_transform(exemplar, exemplar_gt, manual_random, None)
-                query, query_gt, query_edge = self.joint_transform(query, query_gt, manual_random, None, query_edge)
-                other, other_gt, other_edge = self.joint_transform(other, other_gt, None, None, other_edge)
+                query, query_gt = self.joint_transform(query, query_gt, manual_random, None)
+                other, other_gt = self.joint_transform(other, other_gt, None, None)
             else:
                 exemplar, exemplar_gt, exemplar_ref = self.joint_transform(exemplar, exemplar_gt, manual_random, exemplar_ref)
-                query, query_gt, query_ref, query_edge = self.joint_transform(query, query_gt, manual_random, query_ref, query_edge)
-                other, other_gt, other_ref, other_edge = self.joint_transform(other, other_gt, None, other_ref, other_edge)
+                query, query_gt, query_ref = self.joint_transform(query, query_gt, manual_random, query_ref)
+                other, other_gt, other_ref = self.joint_transform(other, other_gt, None, other_ref)
             if len(self.img_root) > 0:
                 single_image, single_gt = self.joint_transform(single_image, single_gt)
         if self.img_transform is not None:
@@ -138,8 +138,8 @@ class CrossPairwiseImg(data.Dataset):
                 query_ref = self.target_transform(query_ref)
                 other_ref = self.target_transform(other_ref)
             # exemplar_edge = self.target_transform(exemplar_edge)
-            query_edge = self.target_transform(query_edge)
-            other_edge = self.target_transform(other_edge)
+            # query_edge = self.target_transform(query_edge)
+            # other_edge = self.target_transform(other_edge)
 
         if len(self.img_root) > 0:
             sample = {'exemplar': exemplar, 'exemplar_gt': exemplar_gt, 'query': query, 'query_gt': query_gt,

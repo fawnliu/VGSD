@@ -11,9 +11,9 @@ import os
 from einops import rearrange
 
 
-class VMD_Network(nn.Module):
+class VGD_Network(nn.Module):
     def __init__(self, pretrained_path=None, num_classes=1): 
-        super(VMD_Network, self).__init__()
+        super(VGD_Network, self).__init__()
         self.encoder = DeepLabV3()
         
         if pretrained_path is not None:
@@ -40,9 +40,7 @@ class VMD_Network(nn.Module):
         self.refine_encoder1 = RefNet_encoder(323, 128)
         self.refine_decoder1 = RefNet_decoder()
 
-        self.attn1_new = frame_attention(dim=96, 
-                                    temporal=True, 
-                                    spatial=True)
+        self.attn1_new = frame_attention(dim=96)
         self.contrast1_new = ContrastModule(planes=128) 
 
         initialize_weights(self.ra_attention_low, self.ra_attention_cross, self.project, 
@@ -480,7 +478,7 @@ def initialize_weights(*models):
 
 
 if __name__ == '__main__':
-    model = VMD_Network().cuda()
+    model = VGD_Network().cuda()
     # initialize_weights(model)
     exemplar = torch.rand(2, 3, 416, 416).cuda()
     query = torch.rand(2, 3, 416, 416).cuda()

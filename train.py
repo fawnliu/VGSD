@@ -29,6 +29,8 @@ import argparse
 import importlib
 from utils import backup_code
 from torch.utils.tensorboard import SummaryWriter
+import os 
+os.CUDA_VISIBLE_DEVICES = '0'
 
 cudnn.deterministic = True
 cudnn.benchmark = False
@@ -39,14 +41,12 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--exp', type=str, default='VGD_baseline', help='exp name')
 parser.add_argument('--model', type=str, default='VGD_baseline', help='model name')
 parser.add_argument('--resume', type=str, default=None, help='model name')
-parser.add_argument('--reflection_root', type=str, default=None, help='model name')
+parser.add_argument('--reflection_root', type=str, default='../VGD_dataset/reflection/train/', help='model name')
 parser.add_argument('--gpu', type=str, default='0', help='used gpu id')
-parser.add_argument('--batchsize', type=int, default=10, help='train batch')
+parser.add_argument('--batchsize', type=int, default=4, help='train batch')
 parser.add_argument('--scale', type=int, default=416)
 parser.add_argument('--bestonly', action="store_true")
-
 parser.add_argument('--loss_ref_penalty', type=float, default=1)
-
 parser.add_argument('--finetune_lr', type=float, default=5e-5)
 parser.add_argument('--scratch_lr', type=float, default=5e-4)
 
@@ -60,8 +60,8 @@ print('='*10)
 print(cmd_args)
 print('='*10, '\n\n')
 
-VMD_file = importlib.import_module('networks.' + model_name)
-VMD_Network = VMD_file.VMD_Network
+# VMD_file = importlib.import_module('networks.' + model_name)
+from networks.VGD_reflection import VGD_Network
 
 os.environ["CUDA_VISIBLE_DEVICES"] = gpu_ids
 
@@ -159,7 +159,7 @@ def main():
     print('=====>Prepare Network {}<======'.format(exp_name))
     # multi-GPUs training
     if len(gpu_ids.split(',')) > 1:
-        net = torch.nn.DataParallel(VMD_Network(cmd_args=cmd_args)).cuda().train()
+        net = torch.nn.DataParallel(VGD_Network()).cuda().train()
         model_without_ddp = net.module 
         # for name, param in net.named_parameters():
         #     if 'backbone' in name:
@@ -173,7 +173,7 @@ def main():
         ]
     # single-GPU training
     else:
-        net = VMD_Network(cmd_args=cmd_args).cuda().train()
+        net = VGD_Network().cuda().train()
         ## net = net.apply(freeze_bn) # freeze BN
         model_without_ddp = net 
         params = [

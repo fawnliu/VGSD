@@ -8,7 +8,7 @@ from skimage import io
 from config import ViSha_test_root
 from misc import check_mkdir
 
-from networks.VGD_reflection import VMD_Network 
+from networks.VGD_reflection import VGD_Network 
 
 from dataset.VSshadow_ours import listdirs_only
 import argparse
@@ -55,7 +55,7 @@ def save_reflection(image_name, pred, d_dir, size):
 
 
 def main():
-    net = VMD_Network().cuda()
+    net = VGD_Network().cuda()
 
     print(args.prediction)
     print(args.exp)
