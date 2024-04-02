@@ -5,7 +5,7 @@
 
 ### Dataest
 
-The training and testing dataset is available at [Google](https://drive.google.com/drive/folders/1QsdYI5Gwi-rKKwGgdE7GFTjhRO4-wIiI?usp=sharing). 
+The training and testing dataset is available at [Google drive](https://drive.google.com/drive/folders/1QsdYI5Gwi-rKKwGgdE7GFTjhRO4-wIiI?usp=sharing). 
 
 
 ### Evaluation
@@ -25,6 +25,10 @@ python infer.py -pred ../results/ -exp ../checkpoints/VGSD.pth
 ### Training
 1. Please inference the reflection maps for the glass regions in the training dataset (192 videos) from [SIRR](https://github.com/zdlarr/Location-aware-SIRR).
 2. Download backbone weights from the [resnext_101_32x4d.pth](https://github.com/fawnliu/VGSD/releases/download/1.0/resnext_101_32x4d.pth) and run `train.py` to train the model.
+
+### Acknowledgement
+
+This responsibility is based on the following repositories: [GSD](https://jiaying.link/cvpr2021-gsd/code.zip), [BiFormer](https://github.com/rayleizhu/BiFormer), [SIRR](https://github.com/zdlarr/Location-aware-SIRR). Thanks to the authors for their excellent work.
 
 
 ### Contact
