@@ -28,7 +28,7 @@ python infer.py -pred ../results/ -exp ../checkpoints/VGSD.pth
 
 ### Acknowledgement
 
-This responsibility is based on the following repositories: [GSD](https://jiaying.link/cvpr2021-gsd/code.zip), [BiFormer](https://github.com/rayleizhu/BiFormer), [SIRR](https://github.com/zdlarr/Location-aware-SIRR). Thanks to the authors for their excellent work.
+This responsibility is based on the following repositories: [GSD](https://jiaying.link/cvpr2021-gsd/code.zip), [VMD](https://jiaying.link/cvpr2023-vmd/), [BiFormer](https://github.com/rayleizhu/BiFormer), [SIRR](https://github.com/zdlarr/Location-aware-SIRR). Thanks to the authors for their excellent work.
 
 
 ### Contact
